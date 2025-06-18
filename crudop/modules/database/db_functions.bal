@@ -16,7 +16,7 @@ public isolated function getUser(int user_id) returns User|error? {
 }
 
 public isolated function searchUser(string searchItem, int? 'limit, int? offset) returns User[]|error {
-    stream<User, error?> resultStream = check dbClient->query(searchUserQuery(searchItem, 'limit, offset));
+    stream<User, error?> resultStream = dbClient->query(searchUserQuery(searchItem, 'limit, offset));
     User[] searchedUsers = [];
 
     check from User searchedUser in resultStream

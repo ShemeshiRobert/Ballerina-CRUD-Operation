@@ -9,23 +9,23 @@ service /user\-service  on new http:Listener(9090) {
             return error("Failed to create user");
         }
     }
-    resource function get users(int id) returns User|error? {
+    resource function get users/[int id]() returns User|error? {
         return db:getUser(id);
     }
 
-    resource function get users/search(string searchItem, int? 'limit, int? offset) returns User[]|error {
+    resource function get users/search/[string searchItem](int? 'limit, int? offset) returns User[]|error {
         return db:searchUser(searchItem, 'limit, offset);
     }
 
-    resource function put users(User user) returns http:Ok|error {
-        if db:updateUser(user) is int{
+    resource function put users/[int id](UpdateUser user) returns http:Ok|error {
+        if db:updateUser(id,user) is int{
             return http:OK;
         } else {
             return error("Failed to update user");
         }
     }
 
-    resource function delete users(int id) returns http:NoContent|error {
+    resource function delete users/[int id]() returns http:NoContent|error {
         if db:deleteUser(id) is int{
             return http:NO_CONTENT;
         } else {

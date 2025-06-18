@@ -28,8 +28,8 @@ public isolated function searchUser(string searchItem, int? 'limit, int? offset)
     
 }
 
-public isolated function updateUser(User user) returns int|error {
-    sql:ExecutionResult|error result = check dbClient->execute(updateUserQuery(user));
+public isolated function updateUser(int id, UpdateUser user) returns int|error {
+    sql:ExecutionResult|error result = check dbClient->execute(updateUserQuery(id,user));
     if result is error {
         return result;
     }

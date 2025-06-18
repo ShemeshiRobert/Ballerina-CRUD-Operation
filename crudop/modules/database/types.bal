@@ -1,6 +1,8 @@
+import ballerina/sql;
 
 public type User record {|
     // Id of the user
+    @sql:Column{name:"user_id"}
     readonly int id;
     // User's first name
     string first_name;
@@ -39,4 +41,11 @@ public type DatabaseConfig record {|
     // Database name
     string database;
        
+|};
+public type UpdateUser record {|
+    string first_name;
+    string last_name;
+    string email;
+    string password;
+    string phone;
 |};

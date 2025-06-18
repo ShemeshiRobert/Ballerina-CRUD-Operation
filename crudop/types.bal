@@ -14,3 +14,10 @@ public type NewUser record {|
     string password;
     string phone;
 |};
+public type UpdateUser record {|
+    string first_name;
+    string last_name;
+    string email;
+    string password;
+    string phone;
+|};

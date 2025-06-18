@@ -12,13 +12,13 @@ isolated function addUserQuery(NewUser newUser) returns sql:ParameterizedQuery{
 }
 
 isolated function getUserQuery(int id) returns sql:ParameterizedQuery{
-    return `SELECT first_name, last_name, email, phone
+    return `SELECT user_id, first_name, last_name, email, phone
     FROM USERS
     WHERE user_id = ${id}`;
 }
 
 isolated function searchUserQuery(string searchItem, int? 'limit, int? offset) returns sql:ParameterizedQuery {
-    sql:ParameterizedQuery mainQuery = `SELECT first_name, last_name, email, phone
+    sql:ParameterizedQuery mainQuery = `SELECT user_id, first_name, last_name, email, phone
     FROM USERS
     WHERE first_name LIKE ${searchItem} OR last_name LIKE ${searchItem} OR email LIKE ${searchItem}`;
     // Setting the limit and offset.
@@ -33,14 +33,14 @@ isolated function searchUserQuery(string searchItem, int? 'limit, int? offset) r
 
     return mainQuery;
 }
-isolated function updateUserQuery(User user) returns sql:ParameterizedQuery {
+isolated function updateUserQuery(int id,UpdateUser user) returns sql:ParameterizedQuery {
     return `UPDATE USERS SET 
     first_name = ${user.first_name},
     last_name = ${user.last_name},
     email = ${user.email},
     password = ${user.password},
     phone = ${user.phone}
-    WHERE user_id = ${user.id}`;    
+    WHERE user_id = ${id}`;    
     
 }
 isolated function deleteUserQuery(int user_id) returns sql:ParameterizedQuery {

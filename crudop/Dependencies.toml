@@ -347,6 +347,14 @@ modules = [
 ]
 
 [[package]]
+org = "ballerinax"
+name = "mysql.driver"
+version = "1.8.0"
+modules = [
+	{org = "ballerinax", packageName = "mysql.driver", moduleName = "mysql.driver"}
+]
+
+[[package]]
 org = "shemeshi"
 name = "crudop"
 version = "0.1.0"
@@ -355,7 +363,8 @@ dependencies = [
 	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "sql"},
 	{org = "ballerinai", name = "observe"},
-	{org = "ballerinax", name = "mysql"}
+	{org = "ballerinax", name = "mysql"},
+	{org = "ballerinax", name = "mysql.driver"}
 ]
 modules = [
 	{org = "shemeshi", packageName = "crudop", moduleName = "crudop"},

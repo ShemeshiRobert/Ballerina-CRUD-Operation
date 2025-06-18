@@ -26,3 +26,17 @@ public type NewUser record {|
     // User's phone number
     string phone;
 |};
+
+public type DatabaseConfig record {|
+    // Database username
+    string user;
+    // Database password
+    string password;
+    // Database host
+    string host;
+    // Database port
+    int port;
+    // Database name
+    string database;
+       
+|};

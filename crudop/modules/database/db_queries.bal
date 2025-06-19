@@ -17,20 +17,11 @@ isolated function getUserQuery(int id) returns sql:ParameterizedQuery{
     WHERE user_id = ${id}`;
 }
 
-isolated function searchUserQuery(string searchItem, int? 'limit, int? offset) returns sql:ParameterizedQuery {
+isolated function searchUserQuery(string searchItem, int? offset) returns sql:ParameterizedQuery {
     sql:ParameterizedQuery mainQuery = `SELECT user_id, first_name, last_name, email, phone
     FROM USERS
-    WHERE first_name LIKE ${searchItem} OR last_name LIKE ${searchItem} OR email LIKE ${searchItem}`;
+    WHERE first_name LIKE ${"%"+searchItem+"%"} OR last_name LIKE ${"%"+searchItem+"%"} OR email LIKE ${"%"+searchItem+"%"}`;
     // Setting the limit and offset.
-    if 'limit is int {
-        mainQuery = sql:queryConcat(mainQuery, ` LIMIT ${'limit}`);
-        if offset is int {
-            mainQuery = sql:queryConcat(mainQuery, ` OFFSET ${offset}`);
-        }
-    } else {
-        mainQuery = sql:queryConcat(mainQuery, ` LIMIT 1000`);
-    }
-
     return mainQuery;
 }
 isolated function updateUserQuery(int id,UpdateUser user) returns sql:ParameterizedQuery {

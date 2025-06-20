@@ -109,10 +109,8 @@ function Search() {
 
             </div>
 
-            {/* //js comment */}
             {createUser && <CreateUser closeCreateUser={setCreateUser} />}
             {updatedUser && ( <UpdateUser closeUpdateUser={() => setUpdatedUser(false)} user={selectedUser} />)}
-            {/* {searchResults && <Result searchTerm={searchTerm} />}      */}
         </div>
     );
 }

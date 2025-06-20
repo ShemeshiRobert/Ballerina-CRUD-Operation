@@ -1,7 +1,6 @@
-/* ——— Layout container ——— */
 .search-container {
-  max-width: 800px;          /* keeps things from stretching on big screens */
-  margin: 2rem auto;         /* center horizontally with some vertical space */
+  max-width: 800px;          
+  margin: 2rem auto;         
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -15,8 +14,6 @@
   align-items: center;
 }
 
-
-/* ——— Top bar (input + buttons) ——— */
 .search-input-wrapper,
 .search-button,
 .create-user-button {
@@ -24,7 +21,6 @@
   align-items: center;
 }
 
-/* input grows, buttons keep natural width */
 .search-input-wrapper {
   flex: 1;
 }
@@ -43,7 +39,7 @@
   border-color: #007bff;
 }
 
-/* shared button styles */
+
 .search-button,
 .create-user-button,
 .user-buttons button {
@@ -56,8 +52,6 @@
 }
 
 
-
-/* subtle press effect */
 button:active {
   transform: translateY(1px);
 }
@@ -66,7 +60,7 @@ button:hover {
   filter: brightness(1.05);
 }
 
-/* ——— Search results list ——— */
+
 .search-results ul {
   list-style: none;
   padding: 0;
@@ -92,26 +86,24 @@ button:hover {
   font-weight: 600;
 }
 
-/* details appear under the name when expanded */
+
 .user-details {
   margin-top: 0.4rem;
   font-size: 0.9rem;
   color: #555;
 }
 
-/* ——— Buttons inside result rows ——— */
+
 .user-buttons {
   display: flex;
   gap: 0.5rem;
 }
 
-/* color‑coded actions */
 .view-button     { background: #17a2b8; color: #fff; }
 .edit-button     { background: #ffc107; color: #212529; }
 .delete-button   { background: #dc3545; color: #fff; }
 
 @media (max-width: 600px) {
-  /* stack name/details above buttons on narrow screens */
   .user-row {
     flex-direction: column;
     align-items: stretch;

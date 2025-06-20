@@ -1,19 +1,18 @@
-/* ——— Full‑screen overlay ——— */
+
 .create-user-container-background {
   position: fixed;
-  inset: 0;                       /* top/right/bottom/left: 0 */
-  background: rgba(0, 0, 0, 0.45);/* dimmed backdrop */
+  inset: 0;                       
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;                  /* above everything else */
+  z-index: 1000;                
 }
 
-/* ——— Modal box ——— */
 .create-user-container {
-  width: min(90%, 500px);         /* max 500px, shrink on small screens */
-  max-height: 90vh;               /* prevent overflow on short screens */
-  overflow-y: auto;               /* scroll inside modal if needed */
+  width: min(90%, 500px);         
+  max-height: 90vh;               
+  overflow-y: auto;               
   background: #fff;
   border-radius: 12px;
   padding: 2rem;
@@ -25,16 +24,14 @@
   font-family: system-ui, sans-serif;
 }
 
-/* ——— Header / title ——— */
 .create-user-container h2 {
-  margin: 0 auto 0;               /* center horizontally */
+  margin: 0 auto 0;             
   font-size: 1.4rem;
   font-weight: 600;
 }
 
-/* ——— Close (X) button ——— */
 .close-button {
-  align-self: flex-end;           /* push to the top‑right corner */
+  align-self: flex-end;        
 }
 
 .close-button button {
@@ -48,10 +45,9 @@
 }
 
 .close-button button:hover {
-  color: #d9534f;                 /* bootstrap‑ish “danger” red */
+  color: #d9534f;                 
 }
 
-/* ——— Form layout ——— */
 form {
   display: flex;
   flex-direction: column;
@@ -79,9 +75,8 @@ input:focus {
   border-color: #007bff;
 }
 
-/* ——— Submit button ——— */
 button[type="submit"] {
-  align-self: flex-end;           /* right‑align inside the form */
+  align-self: flex-end;          
   background: #007bff;
   color: #fff;
   border: none;

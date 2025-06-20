@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import "../UI/Modal.css";
 function UpdateUser({closeUpdateUser,user}){
     const [userInput, setUserInput] = useState({
             first_name: '',
@@ -29,6 +30,7 @@ function UpdateUser({closeUpdateUser,user}){
         try {
             await axios.put(`http://localhost:9090/user-service/users/${user.id}`, userInput);
             console.log("User updated successfully!");
+            closeUpdateUser(false);
         } catch (error) {
             console.error("Error updating user:", error);
         }

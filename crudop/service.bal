@@ -3,7 +3,7 @@ import crudop.database as db;
 
 @http:ServiceConfig {
     cors: {
-        allowOrigins: ["http://localhost:5173"],
+        allowOrigins: ["http://localhost:5174"],
         allowCredentials: false,
         allowHeaders: ["CORELATION_ID", "Content-Type"],
         allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -11,13 +11,13 @@ import crudop.database as db;
     }
 }
 service /user\-service  on new http:Listener(9090) {
-    // @http:ResourceConfig {
-    //     cors: {
-    //         allowOrigins: ["http://localhost:5173"],
-    //         allowCredentials: true,
-    //         allowHeaders: ["X-Content-Type-Options", "X-PINGOTHER", "Content-Type"]
-    //     }
-    // }
+    @http:ResourceConfig {
+        cors: {
+            allowOrigins: ["http://localhost:5174"],
+            allowCredentials: true,
+            allowHeaders: ["X-Content-Type-Options", "X-PINGOTHER", "Content-Type"]
+        }
+    }
     resource function post users(NewUser newUser) returns http:Created|error{
         if db:addUser(newUser) is int{
             return http:CREATED;

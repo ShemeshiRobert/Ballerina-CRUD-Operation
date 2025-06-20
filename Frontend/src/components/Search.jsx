@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CreateUser from './CreateUser.jsx';
-import UpdateUser from "./UpdateUser.jsx"; 
+import UpdateUser from "./UpdateUser.jsx";
+import "../UI/Search.css";
 function Search() {
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -72,18 +73,17 @@ function Search() {
 
     return (
         <div className="search-container">
-            <input className="search-bar"
+            <div className="search-input-wrapper">
+                <input className="search-bar"
                 type="text"
                 value={searchTerm}
                 onChange={handleSearch}
                 placeholder="Search"
             />
-            <span className="search-button">
-                <button onClick={handleSearchButtonClick}>🔍</button>
-            </span>
-            <span className="create-user-button">
-                <button onClick={handleCreateUserButtonClick}>➕ Create User</button>
-            </span>
+            <button className="search-button" onClick={handleSearchButtonClick}>🔍</button>
+            <button className="create-user-button" onClick={handleCreateUserButtonClick}>➕</button>
+            </div>
+            
             <div className="search-results">
                 <ul>
                     {userData.map((user) => (

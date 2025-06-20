@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import "../UI/Modal.css";
 function CreateUser({closeCreateUser}) {
 
     const [userInput, setUserInput] = useState({
@@ -15,12 +16,25 @@ function CreateUser({closeCreateUser}) {
     };
 
     async function handleSubmit(event) {
-        event.preventDefault();
-        console.log("Submitting:", userInput);
-        await axios.post('http://localhost:9090/user-service/users', userInput)
-            .then(response => console.log(response.data))
-            .catch(error => console.error('There was an error creating the user!', error));
+    event.preventDefault();
+    console.log("Submitting:", userInput);
+    try {
+        const response = await axios.post(
+            'http://localhost:9090/user-service/users',
+            userInput,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+        console.log("User created:", response.data);
+        closeCreateUser(false);  
+    } catch (error) {
+        console.error('There was an error creating the user!', error);
     }
+}
+
   return (
     <div className="create-user-container-background">
         <div className="create-user-container">
